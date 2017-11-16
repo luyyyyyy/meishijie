@@ -1,0 +1,101 @@
+header .header{
+    height:130px;
+    background: -webkit-linear-gradient(left, #D61416 , blue); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #D61416, #A1000D); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #D61416, #A1000D); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #D61416 , #A1000D); /* 标准的语法 */
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+}
+header .header>div,header .header>ul{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin:20px;
+
+}
+/*头部logo*/
+header .header .logo{
+    width:181px;
+    height:100px;
+    background:url("../img/logo2.png") no-repeat -29px 0;
+}
+/*头部搜索*/
+
+header .header .search input{
+    width:424px;
+    height:36px;
+    line-height:36px;
+    padding: 0 90px 0 10px;
+    border-radius:5px 0 0 5px;
+    outline:none;
+    border:none;
+    box-sizing: border-box;
+}
+header .header .search .search-btn{
+    width:80px;
+    height:36px;
+    line-height:32px;
+    box-sizing: border-box;
+    border:2px solid #ffffff;
+    border-radius:0 5px 5px 0;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.2em;
+    right:4px;
+    top:3px;
+    background:#A8000F;
+}
+/*用户登录，注册*/
+header .header .user-info a{
+    margin-right:20px;
+    color:#fff;
+    display:flex;
+    align-items: center;
+
+}
+header .header .user-info .qq,
+header .header .user-info .microblog{
+    display:inline-block;
+    width:28px;
+    height:28px;
+    vertical-align: middle;
+    margin-right:5px;
+}
+header .header .user-info .qq{
+    background:url("../img/topdsflogin_icon.gif") no-repeat 0 0;
+}
+header .header .user-info .microblog{
+    background:url("../img/topdsflogin_icon.gif") no-repeat 0 -28px;
+}
+/*nav导航*/
+nav{
+    height:76px;
+    background: #ffffff;
+    line-height: 76px;
+}
+nav .nav{
+    display: flex;
+    padding:0 218px;
+}
+nav .nav>*{
+    padding-right: 40px;
+}
+nav .nav>*>a{
+    font-size:1.3em;
+    font-weight: bold;
+}
+nav .nav>.crown-content{
+    position:relative;
+    padding-right: 60px;
+}
+nav .nav>.crown-content .crown{
+    position:absolute;
+    top:8px;
+    right:43px;
+}
+
+

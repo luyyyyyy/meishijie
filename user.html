@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>美食天下</title>
+    <link rel="stylesheet" href="css/basic.css"/>
+    <link rel="stylesheet" href="css/header.css"/>
+    <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="css/user.css"/>
+	<style>
+	  #toTop{
+	     position:fixed;
+         bottom:200px;
+         right:150px;
+         display:none;
+	  }
+
+	</style>
+</head>
+<body>
+    <div id="header">
+       <header>
+        <div class="header">
+            <div id="logo">
+                <a href="#" class="logo"></a>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="请输入菜谱/食材/菜单/作者"/>
+                <a href="#" class="search-btn">搜&nbsp;&nbsp;&nbsp;索</a>
+            </div>
+            <ul class="user-info">
+                <li class="dropdown">
+                    <a href="#" data-trigger="dropdown" >
+                        <img style="width:35px;height:35px" class="avatar drop" src="" alt="">
+						<span class="user_name"></span>
+                    </a>
+					<ul class="dropdown-menu">
+					   <li><button class="button1"><a href="" style="color:black">发布菜谱</a></button></li>
+					   <li><button><a href="" style="color:black">发布话题</a></button></li>
+					   <li><button><a href="" style="color:black">发布图文</a></button><hr></li>
+					   <li><a href="" style="color:black">我的美食空间</a><hr></li>
+					   <li><a href="" style="color:black">我的积分成长</a><hr></li>
+					   <li><a href="register.html?#log" style="color:black">退出登录</a></li>
+					</ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <span></span>收藏
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        消息
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        签到
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <nav>
+            <ul  class="nav">
+                <li>
+                    <a href="#">
+                        首页
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        菜谱大全
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        饮食健康
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        美食菜单
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        家居馆
+                    </a>
+                </li>
+                <li class="crown-content">
+                    <a href="#">
+                        美食达人
+                    </a><img src="img/user/20160909164810_443.png" class="crown">
+                </li>
+                <li>
+                    <a href="#">
+                        讨论组
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        手机版下载
+                    </a>
+                </li>
+            </ul>
+        </nav>
+       </header>
+    </div>
+    <div id="banner" class="new_loginpage">
+	     <div class="body">
+		    <h1>欢迎来到我的美食空间</h1>
+		    <div class="user_header">
+			   <div class="avatar">
+			     <a href=""><img class="avatar" src="" alt=""></a>
+			   </div>
+			   <div class="user_info">
+			     <div>
+				    <h1 class="user_name">tom</h1>
+					<span>积分:20</span>
+					<span>|</span>
+					<span>经验值</span>
+					<br>
+                    <span>2017年加入美食杰</span>
+					<span>|</span>
+					<span>编辑个人资料</span>              
+				 </div>
+			   </div>
+			   <div class="user_main"></div>
+			</div>
+			
+			<div class="user_nav">
+			   <ul >
+			      <li><a href="">动态</a></li>
+				  <li ><a href="">作品</a></li>
+				  <li ><a href="">任务</a></li>
+				  <li ><a href="">收藏</a></li>
+				  <li ><a href="">喜好</a></li>
+				  <li ><a href="">测试</a></li>
+				  <li ><a href="">讨论</a></li>
+				  <li ><a href="">浏览记录</a></li>
+			  </ul>
+		 </div>
+		 <div style="width:990px;height:288px;background:white;text-align: center;">
+		   <span style="display:block;text-align:center;position:relative">你还没有关注好友,<a href="">点击去关注</a></span>
+		 
+		 </div>
+    </div>
+
+  <div id="footer">
+
+</div>
+ <script src="js/jquery-1.11.3.js"></script>
+ <script src="js/jquery-ui.js"></script>
+ <script src="js/user.js"></script>
+ <script>
+     $("#footer").load('data/footer.php');
+   window.onscroll=function(){
+	   if(document.body.scrollTop>=400)
+			toTop.style.display="block";
+		else
+			toTop.style.display="";
+		}
+ </script>
+</body>
+</html>

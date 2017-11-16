@@ -1,0 +1,595 @@
+/*推荐头*/
+
+img:hover{
+	transform:scale(1.05,1.05);
+}
+.recommend{
+	min-width:1250px;
+}
+.recommend .recommend-title{
+	height:120px;
+	position:relative;
+}
+.recommend .recommend-title>*{
+	width:990px;
+	height:120px;
+	line-height:120px;
+	font-family: Microsoft Yahei;
+	font-weight: normal;
+	color: #333;
+	text-align:center;
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	margin:auto;
+	opacity: 0;
+	z-index: -1;
+	
+}
+.recommend .recommend-title>.show{
+	opacity: 1;
+	z-index: 10;
+	transition: all .5s linear .5s;
+}
+/*推荐轮播*/
+/*	遮盖层和视口*/
+.recommend .recommend-detail{
+	height:330px;
+	position:relative;
+	
+
+}
+.recommend .recommend-detail .mask{
+	position:absolute;
+	width:990px;
+	height:330px;
+}
+.recommend .recommend-detail .mask-viewPort{
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	margin:auto;
+}
+.recommend .recommend-detail .mask-left{
+	background:#fff;
+	opacity:0.7;
+	left:-990px;
+    z-index: 10;
+}
+.recommend .recommend-detail .mask-right{
+	background:#fff;
+	opacity:0.7;
+	right:-990px;
+    z-index: 10;
+}
+/*	推荐轮播图列表*/
+.recommend .recommend-detail .recommend-carousel{
+	display:flex;
+	width:4950px;
+	position:absolute;
+	left:-990px;
+	top:0;
+	transition: all .5s linear;
+}
+.recommend .recommend-detail .recommend-carousel>*{
+    position:relative;
+}
+.recommend .recommend-detail .recommend-carousel .pic-detail{
+    position: absolute;
+    left:0;
+    bottom:0;
+    width:330px;
+    padding: 10px;
+    background:rgba(255,255,255,0.6);
+}
+.recommend  .pic-detail .pic-name{
+	color: #333;
+    font-size: 24px;
+    font-family: Microsoft Yahei;
+	font-weight: normal;
+}
+.recommend  .pic-detail .pic-name:hover{
+	color:#ff3232;
+	text-decoration: underline;
+}
+.recommend .recommend-detail  .pic-detail{
+	font-style: normal;
+	font-weight:normal;
+	color:#666;
+}
+
+.recommend  .pic-detail .specialty{
+	position:absolute;
+	right:30px;
+	top:-10px;
+	padding:10px;
+	text-align:center;
+	background:#60A531;
+}
+.recommend   .pic-detail .specialty>*{
+	color:#fff;
+}
+.recommend   .pic-detail .specialty>*:hover{
+	text-decoration: underline;
+}  
+.recommend .carBtn{
+	position:absolute;
+	height:74px;
+	width:172px;
+	
+}
+.recommend .carBtn-prev{
+	left:10px;
+	top:113px;
+	background:url(../img/nav/zzw_bg.png) no-repeat 0 -364px;
+}   
+.recommend .carBtn-next{
+	right:10px;
+	top:113px;
+	background:url(../img/nav/zzw_bg.png) no-repeat -113px -142px;
+}       
+.recommend .time-list{
+	display:flex;
+	width:990px;
+	height:48px;
+	margin: 0 auto;
+	position: relative;
+}   
+.recommend .time-list .times{
+	width:198px;
+	height:48px;
+	line-height: 48px;
+	text-align: center;
+	font-size: 18px;
+	position: relative;
+	border-top: 3px solid #aaa;
+	background:#fff url('../img/kedulong.gif') no-repeat;
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+.recommend .time-list .time-res{
+	width:990px;
+	height: 48px;
+	border-top: 3px solid #aaa;
+	background:#fff url('../img/kedulong.gif');
+	position:absolute;
+}
+.recommend .time-list .time-left{
+	left:-990px;
+}
+.recommend .time-list .time-right{
+	right:-990px;
+}
+.recommend .time-list .isTime{
+	border-top: 3px solid #FF6363;
+	color: #FF6363;
+}
+.recommend .time-list .timeSlot{
+	position: absolute;
+	left:-12px;
+	bottom:-5px;
+	font-size: 18px;
+	color: #333;
+	z-index: 20;
+}
+.recommend .time-list .dbTime{
+	left:-22px;
+}
+/*晚秋时节润燥滋阴*/
+.autumn-dryness{
+	position: relative;
+}
+.title{
+	width:990px;
+	height:120px;
+	line-height: 120px;
+	font-size: 22px;
+	text-align: center;
+	position: relative;
+	margin: 0 auto;
+}
+.infor-right{
+	position: absolute;
+	right:0;
+	font-size: 12px;
+
+}
+/*多图片轮播*/
+.dryness-food{
+	width:990px;
+	height:596px;
+	overflow-x: hidden;
+	margin:0 auto;
+	position: relative;
+}
+.dryness-food .pics{
+	display:flex;
+	width:3960px;
+	height:596px;
+	position:absolute;
+	left:0;
+}
+.dryness-food .pics .p-group{
+	display: flex;
+	width:990px;
+	height:596px;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: space-between;
+}
+.dryness-food .pics .p-container img{
+	width:316px;
+	height:210px;
+}
+.dryness-food .pics .p-infor{
+	height:78px;
+	background:#fff;
+	position: relative;
+}
+.pics .p-infor::before{
+	content: '';
+	display: table;
+}
+.pics .p-infor>*{
+	margin:10px;
+	padding-left:10px;
+}
+.dryness-food .pics .p-infor .fixer{
+	position:absolute;
+	width:316px;
+	height:10px;
+	padding:0;
+	margin: 0;
+	background: url('../img/ztfixer.gif');
+	top:-10px;
+	left:0;
+	z-index: 10;
+}
+.pics .p-infor .p-title{
+	font-size: 20px;
+}
+/*指示图标*/
+.autumn-dryness .cts-container,
+.autumn-dryness .cts{
+	width:120px;
+	height: 4px;
+}
+.autumn-dryness .cts-container{
+	position: relative;
+	margin: 10px auto;
+}
+.autumn-dryness .cts{
+	display:flex;
+	position:absolute;
+	bottom:0;
+	left:0;
+	z-index: 20;
+	justify-content: space-between;
+}
+.autumn-dryness .cts .ct{
+	width:32px;
+	height:4px;
+	background:#EDDCBE;
+}
+.autumn-dryness .cts .ct.active{
+	background:#60A531;
+}
+/*左右移动按钮*/
+.autumn-dryness .btns .cd-btn{
+	position:absolute;
+	width:130px;
+	height:130px;
+	background:url('../img/index_arrow.gif') no-repeat;
+	bottom:247px;
+	z-index: 100;
+}
+.autumn-dryness .btns .leftarrow{
+	left:100px;
+	background-position:0 0;
+} 
+.autumn-dryness .btns .leftarrow:hover{
+	background-position:-130px 0;
+}
+.autumn-dryness .btns .rightarrow{
+	right:100px;
+	background-position:0 -130px;
+} 
+.autumn-dryness .btns .rightarrow:hover{
+	background-position: -130px -130px;
+}
+/*进补食物*/
+.tonic-food{
+	width:990px;
+	background:#fff;
+	margin:0 auto;
+	padding:10px 0;
+}
+/*导航列表*/
+.tonic-food .food-list{
+	display: flex;
+	padding:10px 0;
+}
+.tonic-food .food-list>*{
+	padding:5px 10px;
+	margin:0 10px;
+}
+.tonic-food .food-list>*:hover{
+	background:#60A531;
+}
+.tonic-food .food-list>*:hover>*{
+	color:#fff;
+
+}
+/*图片*/
+.p-viewPort{
+	width:990px;
+	padding:0 10px;
+	box-sizing:border-box;
+}
+.p-viewPort .d-pics{
+	display: flex;
+	justify-content:space-between;
+}
+.p-viewPort .d-pics>*{
+	position:relative;
+}
+.p-viewPort .d-pics .sub-pic{
+	width:117px;
+	height:117px;
+}
+.p-viewPort .d-pics .p-name{
+	position: absolute;
+	width:100%;
+	padding:5px 0;
+	box-sizing: border-box;
+	left: 0;
+	bottom:0;
+	background: rgba(255,255,255,0.8);
+}
+.p-viewPort .d-pics .square{
+	display: inline-block;
+	width:10px;
+	height:10px;
+	background:#0e0e0e;
+	margin:0 10px;
+}
+/*foodMune  菜品推荐*/
+.foodMune{
+	width:990px;
+}
+.pics-container{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.food-nenu .ct{
+	width:130px;
+	height:130px;
+	background:url('../img/index_arrow.gif') no-repeat 0 0;
+	margin-bottom: -125px;
+ }
+ .food-nenu .ct:hover{
+	background-position: -130px 0;
+ }
+ .food-nenu .ct-right{
+	 background-position: 0 -130px;
+ }
+ .food-nenu .ct-right:hover{
+	 background-position: -130px -130px;
+ }
+.pic-viewPort{
+	width:990px;
+	height: 824px;
+	margin:0 20px;
+	position:relative;
+	overflow-x: hidden;
+
+}
+.pic-viewPort .pic-all{
+	display:flex;
+	width:4950px;
+	position:absolute;
+	left:0;
+	top:0;
+}
+.pic-viewPort .pic-all .pic-list{
+	display: flex;
+	flex-wrap: wrap;
+	width:990px;
+
+}
+.pic-all .pic-list .pic-group{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content: space-between;
+	align-content: space-between;
+	width: 990px;
+	height:704px;
+
+}
+ .pic-all  .pic-group  .detail-container{
+	 position:relative;
+	 height:100px;
+	 width:232px;
+	 overflow-y: hidden;
+ }
+ .pic-all  .pic-group  .car{
+	 position:absolute;
+	 height:200px;
+	 left:0;
+	 top:0;
+	 transition: all .2s linear;
+ }
+ .pic-all  .pic-group  .car:hover{
+	 top:-100px;
+ }
+ .pic-all  .pic-group  .car>*{
+	 display: flex;
+	 flex-wrap: wrap;
+	 align-content: space-between;
+	 height:100px;
+	 padding:10px;
+	 box-sizing:border-box;
+	 
+
+ }
+ .pic-all  .pic-group  .car>*>*{
+	 flex-basis:232px;
+ }
+ .pic-all  .pic-group  .car .show-def{
+	 padding:10px 20px;
+	 background:#fff;
+ }
+ .pic-all  .pic-group  .car .fname{
+	 font-size: 18px;
+	 color:#333333;
+ }
+ .pic-all  .pic-group  .car .comment{
+	 font-size: 14px;
+	 color:#99B2D8;
+ }
+ .pic-all  .pic-group  .car .uname{
+	 font-size: 14px;
+	 color:#FF3232;
+
+ }
+ .pic-all  .pic-group  .car .hide-def{
+	 background:#eeeeee;
+	 padding:10px 20px;
+	 font-size: 14px;
+ }
+ .pic-group  .car .hide-def .method,
+ .pic-group  .car .hide-def .step{
+	 height: 40px;
+	 line-height: 40px;
+	 padding-left:40px;
+	 box-sizing: border-box;
+ }
+ .pic-group  .car .hide-def .step{
+	 background:url('../img/list_style1_icons.png') no-repeat 0 -120px;
+ }
+ .pic-group  .car .hide-def .method{
+	 background:url('../img/list_style1_icons.png') no-repeat 0 -40px;
+ }
+
+ /*文本列表*/
+  .pic-all .pic-list  .food-commend{
+	  width:232px;
+	  height:332px;
+	  border: 1px  solid #DDDDDD;
+	  box-sizing:border-box;
+	  background:#fff;
+  }
+ .pic-all .pic-list .food-list{
+	 display: flex;
+	 width:100%;
+	 flex-wrap:wrap;
+	 box-sizing: border-box;
+	 padding:10px;
+ }
+ .pic-all .pic-list .food-list>*{
+	 padding:5px 10px;
+	 border: 1px solid #DDDDDD;
+	 margin: 5px 10px;
+ }
+ .pic-all .pic-list .pic-group .title{
+	 margin-top: 5px;
+	 width:100%;
+	 height: 30px;
+	 line-height: 30px;
+	 text-align: center;
+ }
+ .pic-all .pic-list .pic-group .enter-menus{
+	 color:#fff;
+	 background:#FF3232;
+	 font-size:15px;
+	 margin-top:30px;
+ }
+ .food-nenu .cts{
+	 display: flex;
+	 align-items: center;
+	 position:absolute;
+	 top: 20px;
+	 right:20px;
+ }
+ .food-nenu .cts .fd-cts{
+	 display: flex;
+ }
+ .food-nenu .cts .fd-cts>*{
+	 margin: 10px;
+	 cursor:pointer;
+ }
+ .food-nenu .cts .fd-cts>*:first-child{
+	 margin-right: 50px;
+ }
+ .food-nenu .cts .fd-cts .active{
+	 color:#60A531;
+ }
+ .food-nenu .cts  .new{
+	 position: relative;
+	 left:90px;
+ }
+ /*健康新闻*/
+ .news-details{
+	 display: flex;
+	 flex-wrap:wrap;
+	 font-family: Arial, Helvetica, sans-serif;
+	 align-content: space-between;
+	 justify-content: space-between;
+	 width: 990px;
+	 height: 340px;
+	 box-sizing: border-box;
+	 margin: 0 auto;
+ }
+ .news-details .n-list{
+	 display: flex;
+	 flex-wrap:wrap;
+	 position:relative;
+	 width:485px;
+ }
+ .news-details .n-list img{
+	 width:160px;
+	 height: 160px;
+ }
+ 
+ .news-details .n-list .n-title{
+	position:absolute;
+	padding:5px 10px;
+	background:#ff3232;
+	color: #fff;
+	right:10px;
+	top:-5px;
+ }
+ .news-details .n-list .n-page{
+	 display: none;
+ }
+ .news-details .n-list .show{
+	display: block
+ }
+ .news-details .n-list .n-news{
+	 width:320px;
+	 height:160px;
+	background: #fff;
+ }
+ .news-details .n-list .n-news .n-text>*{
+	display: block;
+	height: 53px;
+	line-height: 53px;
+	padding-left: 15px;
+	font-size: 14px;
+	color:#666666;
+	box-sizing: border-box;
+ }
+ .news-details .n-list .n-news .n-text>*:hover{
+	 font-size: 16px;
+	 color:#60A531;
+ }
+ .news-details .n-list .n-news .n-text:not(:last-child){
+	 border-bottom:1px solid #EEEEEE;
+ }
+ .news-details .n-list .n-news .n-text .strong{
+	 font-size: 16px;
+	 color:#0e0e0e;
+ }

@@ -1,0 +1,716 @@
+<!doctype html><html lang="zh-cn">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/basic.css"/>
+  <link rel="stylesheet" href="css/header.css"/>
+  <link rel="stylesheet" href="css/footer.css"/>
+  <link rel="stylesheet" href="css/index.css"/>
+  <script src="js/jquery-3.2.1.js"></script>
+  <script src="js/vue.js"></script>
+ </head>
+ <body>
+   <div id="header"></div>
+   <div id="main">
+    <div class="recommend">
+     <div  class="recommend-title">
+      <h1 v-for="(tmp, i) in recommendTitle"
+          :class="{show:i==pIndex-1}">{{tmp}}</h1>
+     </div>
+     <div class="recommend-detail" @mouseover="recommendOver" @mouseout="recommendOut">
+      <div class="mask mask-viewPort">
+       <div class="mask mask-left"></div>
+       <div class="mask mask-right"></div>
+       <ul class="recommend-carousel" :style="{left:offLeft+'px'}">
+        <template v-for="tmp in  recommend">
+         <li  v-for=" obj in tmp">
+          <a :href="obj.href">
+           <img :src="obj.pic">
+          </a>
+          <div class="pic-detail">
+           <h2>
+            <a href="#" class="pic-name">{{obj.name}}</a>
+           </h2>
+           <strong>
+            {{obj.detail}}
+           </strong>
+                            <span class="specialty">
+                                <a href="#">{{obj.specialty}}</a>
+                            </span>
+          </div>
+         </li>
+        </template>
+
+       </ul>
+       <div class="carBtn carBtn-prev" @click="nextPage('.recommend-carousel',recommend,prevD)"
+               :style="{backgroundPosition:aPosition}">
+       </div>
+       <div class="carBtn carBtn-next" @click="nextPage('.recommend-carousel',recommend,nextD)"
+            :style="{backgroundPosition:bPosition}">
+       </div>
+      </div>
+     </div>
+     <div class="time-container">
+      <ul class="time-list">
+       <li class="times time-res time-left"></li>
+       <li
+               v-for="(tmp,i) in  timeList"
+               class="times"
+               :class="{isTime:i==pIndex-1}">
+        {{tmp}}
+                        <span class="timeSlot" :class="{dbTime:i!==0}">
+                            {{timeForm[i]}}
+                        </span>
+       </li>
+       <li class="times  time-res time-right">
+        <span class=" dbTime timeSlot">4:00</span>
+       </li>
+      </ul>
+     </div>
+    </div>
+
+       <!--标题1  十一月，晚秋时节润燥滋阴-->
+
+       <h3 class="title">十一月，晚秋时节润燥滋阴
+            <span class="infor-right">
+                <a href="#">更多菜单&gt;</a>
+            </span>
+       </h3>
+       <!--多图轮播-->
+       <div class="autumn-dryness"  @mouseover="dryOver($event)" @mouseout="dryOut($event)" >
+           <div class="dryness-food">
+               <ul class="pics">
+                   <li class="p-group"  v-for="(v,i) in drynessFoods">
+                       <div class="p-container" v-for=" tmp in v">
+                           <a href="#">
+                               <img :src="tmp.pic" >
+                           </a>
+                           <div  class="p-infor">
+                               <span class="fixer"></span>
+                               <h3 class="p-title">
+                                   <a href="#">
+                                       {{tmp.title}}
+                                   </a>
+                               </h3>
+                               <p class="p-detail">{{tmp.detail}}</p>
+                           </div>
+                       </div>
+                   </li>
+               </ul>
+           </div>
+           <div class="cts-container">
+               <ul class="d-cts">
+                   <template  v-for="i in  drynessFoods.length">
+                       <li class="ct" :class="{active:i==0}" v-if="i!=drynessFoods.length-1"></li>
+                   </template>
+               </ul>
+           </div>
+           <!--左右移动按钮-->
+           <div class="btns">
+               <span class='cd-btn leftarrow' @click="leftArrow"></span>
+               <span class='cd-btn rightarrow' @click="rightArrow"></span>
+           </div>
+
+       </div>
+       <!--标题2  十一月，调理脾胃，适时进补-->
+       <h3 class="title">十一月，调理脾胃，适时进补
+            <span class="infor-right">
+                <a href="#">更多食材&gt;</a>
+            </span>
+       </h3>
+       <div class="tonic-food">
+           <ul class="food-list">
+               <li v-for=" tmp in foodList" >
+                   <a @mouseover="giveIndex($event)" :href="tmp.href">{{tmp.name}}</a>
+               </li>
+           </ul>
+           <div class="p-viewPort">
+               <template  v-for="(obj,i) in tonicFoods">
+                   <ul class="d-pics" v-if="i==pShow">
+                       <li v-for=" tmp in obj">
+                           <a href="#">
+                               <img class="sub-pic" :src="tmp.pic">
+
+                           </a>
+                           <a class="p-name" :href="tmp.href"> <span class="square"></span> {{tmp.name}}</a>
+                       </li>
+                   </ul>
+               </template>
+           </div>
+       </div>
+       <!-- food-nenu -->
+       <div class="food-nenu" @mouseover="fdover" @mouseout="fdout">
+           <div class="pics-container">
+               <span class="ct ct-left" @click="fdArrowLeft" ></span>
+               <div class="pic-viewPort">
+                   <ul class="pic-all">
+                       <li class="pic-list" v-for="(arr,i) in foodMenu">
+                           <h1 class="title">{{foodMenuTitle[i]}}</h1>
+                           <ul class="pic-group">
+                               <li class="p-page" v-for="tmp in arr">
+                                   <div>
+                                       <a :href="tmp.href">
+                                           <img :src="tmp.pic" alt="">
+                                       </a>
+                                   </div>
+                                   <div class="detail-container">
+                                       <div class="car">
+                                           <div class="show-def">
+                                               <p class="fname"><strong>{{tmp.name}}</strong></p>
+                                               <p class="comment"><small>{{tmp.comment}}</small></p>
+                                               <p class="uname">{{tmp.uname}}</p>
+                                           </div>
+                                           <div class="hide-def">
+                                               <p class="step">{{tmp.step}}</p>
+                                               <p class="method">{{tmp.method}}</p>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </li>
+                               <li>
+                                   <div class="food-commend">
+                                       <p class="title">热门栏目推荐</p>
+                                       <hr/>
+                                       <div class="food-list">
+                                           <a href="#">最新菜谱</a>
+                                           <a href="#">家常菜</a>
+                                           <a href="#">凉菜</a>
+                                           <a href="#">素食</a>
+                                           <a href="#">早餐</a>
+                                           <a href="#">乌发</a>
+                                           <a href="#">高血压</a>
+                                           <a href="#">烘焙</a>
+                                           <a href="#">韩国料理</a>
+                                           <a href="#">川菜</a>
+                                           <a href="#">粤菜</a>
+                                           <a href="#">湘菜</a>
+                                           <a href="#">甜点</a>
+                                           <a class="enter-menus" href="#">进入菜谱大全&gt;&gt;</a>
+                                       </div>
+                                   </div>
+                               </li>
+                           </ul>
+
+                       </li>
+                   </ul>
+                   <div class="cts">
+                       <span class="insert new">|&nbsp;&nbsp;最热：</span>
+                       <ul class="fd-cts">
+                           <li v-for=" tmp in foodCts">{{tmp}}</li>
+                       </ul>
+                       <span class="insert more" >更多菜谱&gt;&gt;</span>
+                   </div>
+               </div>
+               <span class="ct ct-right" @click="fdArrowRight" ></span>
+           </div>
+       </div>
+
+       <!--健康生活-->
+       <h1 class="title">健康新闻</h1>
+       <div class="news-details">
+           <div class="n-list" v-for="arr in news">
+               <span class="n-title"> {{arr[0]}} </span>
+               <ul class="n-pic">
+                   <li class="n-page" :class="{show:i==0}" v-for=" (p,i) in arr[1]">
+                       <a href="#"><img :src="p"></a>
+                   </li>
+               </ul>
+               <ul class="n-news">
+                   <li class="n-text" :class="{active:i==0}"  v-for="( t,i) in arr[2]">
+                       <a @mouseover="choosePage($event,i)" href="#">
+                           {{t}}
+                       </a>
+                   </li>
+               </ul>
+           </div>
+       </div>
+   </div>
+   <div id="footer"></div>
+	
+
+  <script>
+      $("#header").load("data/header.php");
+      $("#footer").load("data/footer.php");
+  </script>
+   <script>
+    new Vue({
+     el:"#main",
+     data:{
+           recommend:[
+              [
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/breakfast/breakfast01.jpg',name:'小葱鸡蛋煎饼',
+                specialty:'营养丰富',detail:'柔软有嚼劲非常好吃，还省时哦'},
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/breakfast/breakfast02.jpg',name:'豆沙燕麦粥',
+                specialty:'营养全面',detail:'软烂、香糯很好喝、喜欢的可以试试哟'},
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/breakfast/breakfast03.jpg',name:'香肠烧麦',
+                specialty:'补充体力',detail:'好吃有颜值，一口一个吃着很过瘾'}
+              ],
+              [
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/lunch/lunch01.jpg',name:'红烧鸡中翅',
+                specialty:'胶原蛋白',detail:'肉质鲜嫩，温中益气，轻松光盘'},
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/lunch/lunch02.jpg',name:'清炖狮子头',
+                specialty:'补充能量',detail:'口感松软，肥而不腻，营养丰富'},
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/lunch/lunch03.jpg',name:'香炒双耳',
+                specialty:'营养丰富',detail:'双耳搭配营养美味，全家都赞不绝口'}
+              ],
+              [
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/afternoon-tea/afternoon-tea01.jpg',name:'自制山楂卷',
+                specialty:'开胃消食',detail:'酸酸甜甜，开胃健脾的山楂卷，咽下口水'},
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/afternoon-tea/afternoon-tea02.jpg',name:'黄油烤法棍',
+                specialty:'补充热量',detail:'悠闲的下午，来个香脆金黄的烤法棍吧'},
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/afternoon-tea/afternoon-tea03.jpg',name:'糖渍圣女果',
+                specialty:'营养丰富',detail:'材料简单又很好吃哦，酸甜开胃'}
+              ],
+              [
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/dinner/dinner01.jpg',name:'家常红烧肉',
+                specialty:'补充能量',detail:'色泽红亮，味道鲜甜，全家都爱吃'},
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/dinner/dinner02.jpg',name:'宫保虾球',
+                specialty:'补钙',detail:'营养鲜香真美味，一上桌就被哄抢'},
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/dinner/dinner03.jpg',name:'蟹黄玉米',
+                specialty:'补充能量',detail:'粒粒入口香，比肉还好吃'}
+              ],
+              [
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/supper/supper01.jpg',name:'家常炒面',
+                specialty:'补充体力',detail:'简单快捷又不失营养，很适合一人食'},
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/supper/supper02.jpg',name:'香肠焖饭',
+                specialty:'营养丰富',detail:'食材丰富有营养，吃上一碗真满足'},
+               {href:'Gourmet/pumpkin_detail.html',pic:'img/nav/supper/supper03.jpg',name:'云吞面',
+                specialty:'补充体力',detail:'汤味浓郁，云吞皮薄馅多，蛋面有弹牙之感'}
+              ]
+
+             ],
+           recommendTitle:[
+             '今日早餐推荐：早餐这样做，花样多还省事',
+             '今日午餐推荐：花样吃豆腐，怎样都爱不释口',
+             '今日下午茶推荐：自制下午茶，满满的乐趣',
+             '今日晚餐推荐：诱人晚餐，全家吃的香喷喷',
+             '今日夜宵推荐：街边小食在家做，放心又好吃'
+
+            ],
+           timeList:[
+            '早餐时间',
+            '午餐时间',
+            '下午茶时间',
+            '晚餐时间',
+            '夜宵时间'
+           ],
+           drynessFoods:[
+            [
+             {pic:'img/dryness/01.jpg',title:'假期派对攻略...',detail:'超详尽的派对攻略'},
+             {pic:'img/dryness/02.jpg',title:'这些甜点不用烤箱，轻...',detail:'小编们却为月饼掐了一场架'},
+             {pic:'img/dryness/03.jpg',title:'“雾霾模式” 多吃四...',detail:''},
+             {pic:'img/dryness/04.jpg',title:'一口征服“饼”不简单...',detail:'超好吃的中式饼'},
+             {pic:'img/dryness/05.jpg',title:'不懂为冰箱做收纳分类...',detail:'冰箱收纳小常识'},
+             {pic:'img/dryness/06.jpg',title:'秋天一碗汤，不用医生...',detail:'秋天一碗汤！'}
+            ],
+            [
+             {pic:'img/dryness/07.jpg',title:'红糖白糖和冰糖区别这...',detail:'白糖、红糖、冰糖,你吃对了吗?'},
+             {pic:'img/dryness/08.jpg',title:'深秋时节，餐桌上来点...',detail:'深秋时节，餐桌上来点...'},
+             {pic:'img/dryness/09.jpg',title:'做菜用什么油最好？一...',detail:'一张表看懂咋吃油'},
+             {pic:'img/dryness/10.jpg',title:'明日霜降，霜打的蔬菜...',detail:'霜打的蔬菜更鲜甜'},
+             {pic:'img/dryness/11.jpg',title:'秋后萝卜赛人参，白萝...',detail:'白萝卜这样吃功效赛人参'},
+             {pic:'img/dryness/12.jpg',title:'紫薯红薯和白薯，各有...',detail:'各有各“薯”性'}
+            ],
+            [
+             {pic:'img/dryness/13.jpg',title:'鸡蛋做不对营养全白费...',detail:'鸡蛋做不对营养全白费'},
+             {pic:'img/dryness/14.jpg',title:'这些甜点不用烤箱，轻...',detail:'这些甜点一定要学会'},
+             {pic:'img/dryness/15.jpg',title:'有了这些面，我可以一...',detail:'面条做法大全'},
+             {pic:'img/dryness/16.jpg',title:'七分饱是什么感觉？打...',detail:'打赌你一直吃撑了'},
+             {pic:'img/dryness/17.jpg',title:'不懂为冰箱做收纳分类...',detail:'白萝卜这样吃功效赛人参'},
+             {pic:'img/dryness/18.jpg',title:'听说，下雨天和美食更...',detail:'听说，下雨天和美食更配哦'}
+            ]
+           ],
+           tonicFoods:[
+            [
+             {pic:'img/fruits/fruit01.jpg', href:'#', name:'柚子'},
+             {pic:'img/fruits/fruit02.jpg', href:'#', name:'猕猴桃'},
+             {pic:'img/fruits/fruit03.jpg', href:'#', name:'梨'},
+             {pic:'img/fruits/fruit04.jpg', href:'#', name:'柿子'},
+             {pic:'img/fruits/fruit05.jpg', href:'#', name:'甘蔗'},
+             {pic:'img/fruits/fruit06.jpg', href:'#', name:'火龙果'},
+             {pic:'img/fruits/fruit07.jpg', href:'#', name:'橘子'},
+             {pic:'img/fruits/fruit08.jpg', href:'#', name:'山楂'}
+            ],
+            [
+             {pic:'img/vagetables/vagetables01.jpg', href:'#', name:'藕'},
+             {pic:'img/vagetables/vagetables02.jpg', href:'#', name:'白萝卜'},
+             {pic:'img/vagetables/vagetables03.jpg', href:'#', name:'土豆'},
+             {pic:'img/vagetables/vagetables04.jpg', href:'#', name:'南瓜'},
+             {pic:'img/vagetables/vagetables05.jpg', href:'#', name:'四季豆'},
+             {pic:'img/vagetables/vagetables06.jpg', href:'#', name:'山药'},
+             {pic:'img/vagetables/vagetables07.jpg', href:'#', name:'大白菜'},
+             {pic:'img/vagetables/vagetables08.jpg', href:'#', name:'尖椒'}
+            ],
+            [
+             {pic:'img/grain/grain01.jpg', href:'#', name:'板栗'},
+             {pic:'img/grain/grain02.jpg', href:'#', name:'核桃（鲜）'},
+             {pic:'img/grain/grain03.jpg', href:'#', name:'毛豆'},
+             {pic:'img/grain/grain04.jpg', href:'#', name:'花生'},
+             {pic:'img/grain/grain05.jpg', href:'#', name:'玉米'},
+             {pic:'img/grain/grain06.jpg', href:'#', name:'冬枣'},
+             {pic:'img/grain/grain07.jpg', href:'#', name:'薏米'},
+             {pic:'img/grain/grain08.jpg', href:'#', name:'燕麦'}
+            ],
+            [
+             {pic:'img/fresh/fresh01.jpg', href:'#', name:'大闸蟹'},
+             {pic:'img/fresh/fresh02.jpg', href:'#', name:'鲈鱼'},
+             {pic:'img/fresh/fresh03.jpg', href:'#', name:'皮皮虾'},
+             {pic:'img/fresh/fresh04.jpg', href:'#', name:'鸭'},
+             {pic:'img/fresh/fresh05.jpg', href:'#', name:'虾'},
+             {pic:'img/fresh/fresh06.jpg', href:'#', name:'扇贝'},
+             {pic:'img/fresh/fresh07.jpg', href:'#', name:'海参'},
+             {pic:'img/fresh/fresh08.jpg', href:'#', name:'牛肉'}
+            ]
+           ],
+           foodList:[
+            {name:'水果',href:'#'},
+            {name:'蔬菜',href:'#'},
+            {name:'五谷',href:'#'},
+            {name:'生鲜',href:'#'},
+           ],
+           foodMenu:[
+            [
+             {pic:'img/food-menu/new/01.jpg',href:'#',name:'黑麦南瓜豆沙包',comment:'0评论 0 人气',uname:'快乐雅如',step:'12步/大概30分钟',method:'蒸/甜味'},
+             {pic:'img/food-menu/new/02.jpg',href:'#',name:'银耳红枣养生汤',comment:'0评论 0 人气',uname:'阳小呆miko',step:'6步/大概30分钟',method:'炖/甜味'},
+             {pic:'img/food-menu/new/03.jpg',href:'#',name:'豆浆冷面',comment:'0评论 0 人气',uname:'黑猫警长',step:'6步/大概5分钟',method:'拌/家常味'},
+             {pic:'img/food-menu/new/04.jpg',href:'#',name:'板栗焖鸡',comment:'0评论 0 人气',uname:'快乐雅如',step:'13步/大概30分钟',method:'蒸/家常味'},
+             {pic:'img/food-menu/new/05.jpg',href:'#',name:'洋葱炒鸡蛋',comment:'0评论 0 人气',uname:'y圆子y',step:'8步/大概15分钟',method:'炒/家常味'},
+             {pic:'img/food-menu/new/06.jpg',href:'#',name:'芋泥吐司卷',comment:'0评论 0 人气',uname:'宝宝辅食达人',step:'13步/大概30分钟',method:'煎/其它口味'},
+             {pic:'img/food-menu/new/07.jpg',href:'#',name:'莲藕糯米糕',comment:'0评论 0 人气',uname:'西米fiona',step:'5步/大概15分钟',method:'煮/甜味'}
+            ],
+            [
+             {pic:'img/food-menu/hour/01.jpg',href:'#',name:'凉拌鸡丝',comment:'49评论 14643 人气',uname:'穿过海的声音83',step:'6步/大概30分钟',method:'拌/咸鲜味'},
+             {pic:'img/food-menu/hour/02.jpg',href:'#',name:'酱油饭',comment:'36评论 13531 人气',uname:'童尐果 ',step:'8步/大概10分钟',method:'炒/家常味'},
+             {pic:'img/food-menu/hour/03.jpg',href:'#',name:'咸蛋黄虾仁豆腐',comment:'106评论 17865 人气',uname:'开心果子365Q',step:'13步/大概5分钟',method:'其它工艺/家常味'},
+             {pic:'img/food-menu/hour/04.jpg',href:'#',name:'乱炖之猪肉粉条',comment:'100评论 15217 人气',uname:'花凝雨嫣',step:'13步/大概一天',method:'腌/酱香味'},
+             {pic:'img/food-menu/hour/05.jpg',href:'#',name:'茄汁豆腐',comment:'28评论 11895 人气',uname:'美乐猪',step:'9步/大概15分钟',method:'煲/家常味'},
+             {pic:'img/food-menu/hour/06.jpg',href:'#',name:'椒香五花肉',comment:'113评论 17556 人气',uname:'孩妈@妮妮',step:'24步/大概15分钟',method:'煮/酸辣味'},
+             {pic:'img/food-menu/hour/07.jpg',href:'#',name:'青红椒炒虾仁',comment:'28评论 12327 人气',uname:'美美家的厨房',step:'8步/大概15分钟',method:'炒/家常味'},
+            ],
+            [
+             {pic:'img/food-menu/today/01.jpg',href:'#',name:'香酥反沙馒头条',comment:'131评论 16982 人气',uname:'寓言7656',step:'9步/大概10分钟',method:'炸/甜味'},
+             {pic:'img/food-menu/today/02.jpg',href:'#',name:'零难度日式丸串烧',comment:'75评论 14531 人气',uname:'罐头视频',step:'6步/大概30分钟',method:'烤/香辣味'},
+             {pic:'img/food-menu/today/03.jpg',href:'#',name:'酸爽藕片',comment:'83评论 13865 人气',uname:'喵 控',step:'7步/大概5分钟',method:'拌/酸辣味'},
+             {pic:'img/food-menu/today/04.jpg',href:'#',name:'乱炖之猪肉粉条',comment:'155评论 11217 人气',uname:'妃·英理',step:'14步/大概60分钟',method:'炖/咸鲜味'},
+             {pic:'img/food-menu/today/05.jpg',href:'#',name:'洋葱炒鸡蛋',comment:'0评论 0 人气',uname:'y圆子y',step:'9步/大概15分钟',method:'煲/家常味'},
+             {pic:'img/food-menu/today/06.jpg',href:'#',name:'葱油拌面',comment:'38评论 13059 人气',uname:'穿过海的声音83',step:'5步/大概30分钟',method:'拌/葱香味'},
+             {pic:'img/food-menu/today/07.jpg',href:'#',name:'丝瓜炖豆腐',comment:'41评论 17156 人气',uname:'穿过海的声音83',step:'5步/大概15分钟',method:'炖/咸鲜味'}
+            ],
+            [
+             {pic:'img/food-menu/week/01.jpg',href:'#',name:'糖醋五花肉',comment:'131评论 16982 人气',uname:'老方小雨',step:'14步/大概30分钟',method:'烧/甜味'},
+             {pic:'img/food-menu/week/02.jpg',href:'#',name:'凉拌茄子',comment:'37评论 12397 人气',uname:'sourcehe',step:'8步/大概10分钟',method:'拌/香辣味'},
+             {pic:'img/food-menu/week/03.jpg',href:'#',name:'剁椒鸭血',comment:'30评论 8097 人气',uname:'寓言7656',step:'7步/大概5分钟',method:'蒸/香辣味'},
+             {pic:'img/food-menu/week/04.jpg',href:'#',name:'糟卤五香毛豆',comment:'155评论 11217 人气',uname:'幸福精灵',step:'12步/大概30分钟',method:'泡/咸鲜味'},
+             {pic:'img/food-menu/week/05.jpg',href:'#',name:'猪腰莲藕汤',comment:'69评论 8480 人气',uname:'瑷瑷baby',step:'9步/大概15分钟',method:'煲/家常味'},
+             {pic:'img/food-menu/week/06.jpg',href:'#',name:'酱爆羊肉',comment:'34评论 9184人气',uname:'林妈爱美食',step:'9步/大概15分钟',method:'炒/香辣味'},
+             {pic:'img/food-menu/week/07.jpg',href:'#',name:'酱爆腰果鸡丁',comment:'96评论 12913 人气',uname:'孩妈@妮妮',step:'15步/大概10分钟',method:'炒/家常味'}
+            ]
+           ],
+           foodMenuTitle:['最新菜谱','每小时最新菜谱','今日最受欢迎菜谱','一周热门菜谱推荐'],
+           foodCts:['最新','一小时','今天','七天'],
+           timeForm:['4:00','10:00','14:00','16:00','21:00'],
+            //            健康新闻
+           news:[
+             [
+              ['食品安全'],
+              [
+               'img/news-health/safe-food/01.jpg',
+               'img/news-health/safe-food/02.jpg',
+               'img/news-health/safe-food/03.jpg'
+              ],
+              [
+               '冻鱼保鲜营养吗?',
+               '哪些啤酒谣言还在飞?',
+               '凉拌或油炸四季豆易中毒'
+
+              ]
+             ],
+             [
+              ['文化典故'],
+              [
+               'img/news-health/cultural-allusions/01.jpg',
+               'img/news-health/cultural-allusions/02.jpg',
+               'img/news-health/cultural-allusions/03.jpg'
+              ],
+              [
+               '南方春节食物的寓意',
+               '轻食主义到底是什么呢?',
+               '腊八除了吃腊八粥还吃什么？'
+              ]
+             ],
+             [
+              [
+               '健康指南'
+              ],
+              [
+               'img/news-health/health/01.jpg',
+               'img/news-health/health/02.jpg',
+               'img/news-health/health/03.jpg'
+              ],
+              [
+               '为什么网红们都爱丘比沙拉汁',
+               '考前饮食三大忌，这些坑你不要踩',
+               '年末应酬多，喝酒前后饮食有讲究'
+              ]
+             ],
+             [
+              ['新鲜资讯'],
+              [
+               'img/news-health/new-information/01.jpg',
+               'img/news-health/new-information/02.jpg',
+               'img/news-health/new-information/03.jpg'
+              ],
+              [
+               '2016年食品抽检合格率96.8%',
+               '【探索·发现】格鲁吉亚',
+               '扫码获得的减肥代餐品靠谱吗?'
+              ]
+             ]
+    ],
+                pIndex:0,
+                pWidth:990,
+                offLeft:0,
+                pCanMove:true,
+                pTimer:'',
+                nextD: -1,
+                prevD: 1,
+                pMoving: false,
+                dryCanMove:true,
+                dryIsMoving:false,
+                dryTimer:'',
+                dryCycle:1000,
+                // tonicFoods
+                pShow:0,
+                //foodList 弹出、隐藏
+                foodIndex:0,
+                fdCanMove:true,
+                fdTimer:'',
+                fdIsMoving:false,
+                aPosition:'',
+                bPosition:''
+
+     },
+     watch:{
+         pIndex:function(v){
+             this.aPosition=(v!=1)?('0 '+((v-2)*74+68)*(-1)+'px'):'0 -364px';
+             console.log(this.aPosition);
+             this.bPosition=(v!=5)?'-174px '+(v*74+68)*(-1)+'px':'-174px -68px';
+             console.log(typeof(this.bPosition));
+
+         }
+     },
+     methods: {
+         recommendOver: function () {
+             this.pCanMove = false;
+         },
+         recommendOut: function () {
+             this.pCanMove = true;
+         },
+         nextPage:function(selector,array,direction){
+            if(!this.pMoving){
+                this.pMoving=true;
+                setTimeout(function(){this.pMoving=false}.bind(this),1000);
+                var $carPics = $(selector);
+                console.log(selector);
+                console.log($(selector));
+                var n=array.length;
+                if(direction==-1){
+                    if(this.pIndex>=n-2){
+                        $carPics.css("transition","none");
+                        console.log($carPics);
+                        console.log($carPics.css("transition"));
+                        this.pIndex=0;
+                        this.offLeft=0;
+                        setTimeout(function(){
+                            $carPics.css("transition","all .5s linear");
+                            this.pIndex++;
+                            this.offLeft+=this.pWidth*direction;
+                        }.bind(this),20);
+                    }else{
+                        this.pIndex++;
+                        this.offLeft+=this.pWidth*direction;
+                        console.log(this.pIndex);
+                        console.log(this.offLeft);
+                    }
+                }else if(direction==1){
+                    if(this.pIndex<=1){
+                        $carPics.css("transition","none");
+                        console.log($carPics.css("transition"));
+                        this.pIndex=n-1;
+                        console.log(this.pIndex);
+                        this.offLeft=this.pWidth*this.pIndex*(-1);
+                        setTimeout(function(){
+                            $carPics.css("transition","all .5s linear");
+                            this.pIndex--;
+                            this.offLeft+=this.pWidth*direction;
+                        }.bind(this),20);
+                    }else{
+                        this.pIndex--;
+                        this.offLeft+=this.pWidth*direction;
+                        console.log(this.pIndex);
+                    }
+                }
+
+            }
+
+
+
+        },
+         carouselNextPage:function(){
+            if(this.pCanMove){
+                this.nextPage('.recommend-carousel',this.recommend,this.nextD);
+            }
+        },
+
+         // 第二组，无遮罩轮播
+         dryOver: function (event){
+            this.dryCanMove=false ;
+         },
+         dryOut: function (event){
+            this.dryCanMove=true ;
+         },
+         generalCarousel:function(elm0,elm1,direction){
+            var     $carPics = $(elm0);
+            var    $left = parseFloat($carPics.css("left").replace('-',''));
+            var    $step = parseFloat($carPics.children().first().css("width"));
+            var    $index = $left==0?0:$left / $step;
+            var    duration= 0.5;
+            var    n=$carPics.children().length;
+            var    $cts = $(elm1);
+            $carPics.css("transition",`all ${duration}s linear`);
+            if(direction==-1){
+                $index++;
+                $left=$step*$index*(-1);
+                $carPics.css("left",$left);
+                if($index>n-2){
+                    setTimeout(function(){
+                        $carPics.css("transition","none");
+                        console.log($carPics.css("transition"));
+                        $index=0;
+                        $left=0;
+                        $carPics.css('left',$left);
+                        $cts.children().eq($index).addClass("active")
+                                .siblings().removeClass("active");
+                        setTimeout(function(){
+                            $carPics.css("transition",`all ${duration}s linear`);
+                            console.log($carPics.css("transition"));
+
+                        }.bind(this),100);
+
+                    }.bind(this),duration*1000);
+                }else{
+                    $cts.children().eq($index).addClass('active')
+                            .siblings().removeClass('active');
+                }
+            }else if(direction==1){
+                if($index<1){
+                    $carPics.css("transition","none");
+                    console.log($carPics.css("transition"));
+                    $index=n-1;
+                    $left=$step*$index*(-1);
+                    $carPics.css('left',$left);
+                    setTimeout(function(){
+                        $carPics.css("transition",`all ${duration}s linear`);
+                        $index--;
+                        $left=$step*$index*(-1);
+                        $carPics.css('left',$left);
+                        $cts.children().eq($index).addClass('active')
+                                .siblings().removeClass('active');
+                    }.bind(this),20);
+                }else{
+                    $index--;
+                    $left=$step*$index*(-1);
+                    $carPics.css('left',$left);
+                    $cts.children().eq($index).addClass('active')
+                            .siblings().removeClass('active');
+                }
+            }
+        },
+         dryCarousel:function(){
+            if(this.dryCanMove){
+                console.log('可以调用');
+                this.generalCarousel('.pics','.d-cts',this.nextD);
+            }
+         },
+        leftArrow:function(){
+            if(!this.dryIsMoving){
+                this.dryIsMoving=true;
+                this.generalCarousel('.pics','.d-cts',this.prevD);
+                setTimeout(function(){this.dryIsMoving=false}.bind(this),this.dryCycle);
+            }
+        },
+        rightArrow:function(){
+            if(!this.dryIsMoving){
+                this.dryIsMoving=true;
+                this.generalCarousel('.pics','.d-cts',this.nextD);
+                setTimeout(function(){
+                    this.dryIsMoving=false;
+                }.bind(this),this.dryCycle);
+            }
+        },
+         // foodList-弹出-隐藏
+        giveIndex:function(e){
+            e.stopPropagation();
+            this.pShow=$(e.target).parent().index();
+            console.log(this.pShow);
+        },
+         //第三组轮播
+        fdover:function(){
+            this.fdCanMove=false;
+        },
+        fdout:function(){
+            this.fdCanMove=true;
+        } ,
+        fdCarousel:function(){
+            if(this.fdCanMove){
+                this.generalCarousel('.pic-all','.fd-cts',this.nextD);
+            }
+        },
+        fdArrowLeft:function(){
+            if(!this.fdIsMoving){
+                this.generalCarousel('.pic-all','.fd-cts',this.prevD);
+            }
+        },
+        fdArrowRight:function(){
+            if(!this.fdIsMoving){
+                this.fdIsMoving=true;
+                setTimeout(function(){this.fdIsMoving=false;}.bind(this),this.dryCycle);
+                this.generalCarousel('.pic-all','.fd-cts',this.nextD);
+            }
+        },
+         // 健康生活
+        choosePage:function(e,i){
+            var $e=$(e.target);
+            $e.addClass('strong').parent().siblings().children().removeClass('strong');
+            $e.parent().parent().siblings().children().eq(i).show().siblings().hide();
+        }
+
+    },//         method
+     beforeMount:function(){
+         this.recommend.push(this.recommend[0]);
+         this.recommend.unshift(this.recommend[this.recommend.length-2]);
+         this.offLeft=this.pIndex*this.pWidth;
+         this.carouselNextPage();
+         this.pTimer = setInterval(function(){this.carouselNextPage()}.bind(this),3000);
+         this.drynessFoods.push(this.drynessFoods[0]);
+         this.dryCarousel();
+         this.dryTimer = setInterval(function(){
+             this.dryCarousel();
+         }.bind(this),2000);
+         this.foodMenu.push(this.foodMenu[0]);
+         this.fdCarousel();
+         this.fdTimer=setInterval(function(){
+             this.fdCarousel();
+         }.bind(this),2000);
+
+  }
+
+
+
+    })
+
+
+
+   </script>
+ </body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>美食天下</title>
+    <link rel="stylesheet" href="css/basic.css"/>
+    <link rel="stylesheet" href="css/header.css"/>
+    <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="css/register.css"></link>
+	<style>
+	  #toTop{
+	     position:fixed;
+         bottom:200px;
+         right:150px;
+         display:none;
+	  }
+	</style>
+</head>
+<body>
+    <div id="header">
+        <div class="loading">
+           <img src="img/login/loading.gif" alt="加载中..." >
+        </div>
+    </div>
+    <div id="banner" class="new_loginpage">
+       <h3 class="rg_title"><img src="img/login/left.png"> &nbsp;登录美食杰&nbsp; <img src="img/login/right.png"></h3>
+     
+       <div class="pic">
+		  <div class="pic_rg">
+			  <a class="a1"><span class="icon1"></span><!-- 微信登录 --></a>
+              <a class="a2"><span class="icon1"></span><!-- QQ登录 --></a>
+              <a class="a3"><span class="icon"></span><!-- 微博登录 --></a>
+		  </div>
+          <a href="#" class="more_log_btn" id="more_log">更多第三方登录方式 ∨</a> 
+
+          <div class="more_log">
+              <a href=""><img src="img/login/renren.png">人人网账号登录</a>
+              <a href=""><img src="img/login/taobao.png">淘宝账号登录</a>
+              <a href=""><img src="img/login/baidu.png">百度账号登录</a>
+              <a href=""><img src="img/login/douban.png">豆瓣账号登录</a>
+          </div>
+	   </div>
+        
+        <div class="or">
+        </div>
+     
+	  <!-- 登录 -->
+	   <div id="log" class="log_b">
+            <form method="post">
+			   <div class="">
+				  <input type="text" id="uname" class="text" value="" name="username" placeholder="请输入手机号/邮箱/昵称">
+			   </div>
+			   <div class="">
+				  <input type="password" id="qrmm" class="password" name="password" placeholder="请输入密码">
+			   </div>
+			   <div class="log_zd">
+				  <label class="lab"><input type="checkbox" id="" checked> 下次自动登录</label>
+				  <a>忘记密码?</a>
+			   </div>
+			   <div class="" style="">
+				  <input type="submit" class="submit" value="登录">
+			   </div>
+		    </form>
+       </div>
+
+       <div class="zc" id="more_zc" style="">
+         <div id="" class="zc_font">
+            <a class="active" href="#mobil" data-toggle="item" id="zc_phone">手机注册</a>
+            <span class="">|</span>
+            <a class="" href="#email2" id="zc_email" data-toggle="item" >邮箱注册</a>
+         </div>
+         
+         <div id="mobil" class="zc_form active" >
+            <form method="post" action="">
+                 <div class="">
+					<input type="text" class="text" name="phone" id="phone" placeholder="请输入手机号"  pattern="(\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$"
+                    required>
+					<span id="span3"class="msg-default hidden">请输入合法的手机号</span>
+				 </div>
+				 <div class="">
+					<input type="text" class="text2" id="mobile_code" placeholder="请输入验证码">
+					<a href=" " class="errsend " id="phone_yzmbtn">点击获取验证码</a>
+				 </div>
+				 <div class="login_tips tip" style="display:none;"> </div>
+				 <div class="">
+					<input type="password" class="password" id="password"  required name="password" placeholder="请输入密码">
+					<span id="span4"class="msg-default hidden">密码长度在6到12位之间</span>
+				 </div>
+				 <div class="login_tips tip" style="display:none;"></div>
+				 <div class="login_pw_tips state1" style="display:none;"></div>
+
+				 <div class="" style="">
+					<label><input type="checkbox" id="mobile_check" class="checkbox" checked>我已阅读并且同意<a>美食杰用户使用协议</a></label>
+				 </div>
+				 <div class="" style="text-align:center;">
+					 <input type="submit" class="submit" id="" value="注册">
+				 </div>
+            </form>
+         </div>
+
+         <div id="email2" class="zc_form">
+             <form method="post" action="" id="form1">
+                 <div class="form_group">
+					<input type="email" class="text" id="email" placeholder="请输入邮箱号" autocomplete autofocus required type="email" name="email">	
+					 <span id="span1"class="msg-default hidden">请输入合法的邮箱地址</span>
+				 </div>
+		      
+
+				 <div class="form_group">
+					<input type="password" required  minlength="6" maxlength="12" autofocus class="password" id="upwd" name="upwd" placeholder="请输入密码">
+					<span id="span2"class="msg-default hidden">密码长度在6到12位之间</span>
+				 </div>
+
+				 <div class="" style="" id="qq">
+					<label><input type="checkbox" id="mobile_check2" class="checkbox" required checked>我已阅读并且同意<a>美食杰用户使用协议</a></label>
+				 </div>
+				 <div class="" style="text-align:center;" id="zhuce">
+					 <input type="submit" class="submit" id="bt-register" value="注册">
+				 </div>
+              </form>
+         </div>
+      </div>
+	<a id="mm_log" href="" class="more_log_btn more_log_btn2" opened="1">"已有账号？马上登陆 ∧"</a>	
+    </div>
+  <div id="footer"></div>
+ 
+
+ <script src="js/jquery-1.11.3.js"></script>
+ <script src="js/base.js"></script>
+ <script src="js/register.js"></script>
+ 	<script src="js/jquery-ui.js"></script>
+ <script>
+		$("#footer").load("data/footer.php");
+   window.onscroll=function(){
+	   if(document.body.scrollTop>=400)
+			toTop.style.display="block";
+		else
+			toTop.style.display="";
+		}
+ </script>
+</body>
+</html>

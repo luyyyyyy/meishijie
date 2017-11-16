@@ -1,0 +1,189 @@
+header .header{
+    height:130px;
+    background: -webkit-linear-gradient(left, #D61416 , blue); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #D61416, #A1000D); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #D61416, #A1000D); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #D61416 , #A1000D); /* 标准的语法 */
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+}
+header .header>div,header .header>ul{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin:20px;
+
+}
+/*头部logo*/
+header .header .logo{
+    width:181px;
+    height:100px;
+    background:url("../images/header/logo2.png") no-repeat -29px 0;
+}
+/*头部搜索*/
+
+header .header .search input{
+    width:424px;
+    height:36px;
+    line-height:36px;
+    padding: 0 90px 0 10px;
+    border-radius:5px 0 0 5px;
+    outline:none;
+    border:none;
+    box-sizing: border-box;
+}
+header .header .search .search-btn{
+    width:80px;
+    height:36px;
+    line-height:32px;
+    box-sizing: border-box;
+    border:2px solid #ffffff;
+    border-radius:0 5px 5px 0;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.2em;
+    right:4px;
+    top:3px;
+    background:#A8000F;
+}
+/*用户登录，注册*/
+header .header .user-info a{
+    margin-right:20px;
+    color:#fff;
+    display:flex;
+    align-items: center;
+
+}
+header .header .user-info .qq,
+header .header .user-info .microblog{
+    display:inline-block;
+    width:28px;
+    height:28px;
+    vertical-align: middle;
+    margin-right:5px;
+}
+header .header .user-info .qq{
+    background:url("../images/header/topdsflogin_icon.gif") no-repeat 0 0;
+}
+header .header .user-info .microblog{
+    background:url("../images/header/topdsflogin_icon.gif") no-repeat 0 -28px;
+}
+/*nav导航*/
+nav{
+    height:76px;
+    background: #ffffff;
+    line-height: 76px;
+}
+nav .nav{
+    display: flex;
+    padding:0 218px;
+    position: relative;
+}
+nav .nav>*{
+    padding:0 20px;
+    height:77px;
+    line-height: 77px;
+    box-sizing: border-box;
+}
+nav .nav>*>a{
+    font-size:1.3em;
+    font-weight: bolder;
+}
+nav .nav>.crown-content{
+    position:relative;
+    padding-right: 60px;
+}
+nav .nav>.crown-content .crown{
+    position:absolute;
+    top:8px;
+    right:43px;
+}
+/*弹出框*/
+.nav .target::after{
+    content: '';
+    display: block;
+    width:100%;
+    height: 5px;
+    background:#FF3232;
+    left: 0;
+    bottom: 0;
+    position: relative;
+    top:-7px;
+}
+.nav .details{
+    position:absolute;
+    display:flex;
+    z-index: 100;
+    width:990px;
+    height:282px;
+    padding: 10px 0 10px 30px;
+    box-sizing: border-box;
+    top:99.9%;
+    left: 218px;
+    background: #fff;
+    flex-wrap: wrap;
+    display: none;
+}
+.nav>*:hover{
+    background:#FAFAFA;
+}
+.nav>*:hover .details{
+    display:flex;
+    background:#FAFAFA;
+}
+.nav .details>*:first-child{
+    width:100%;
+}
+.nav .details>*{
+    width:35%;
+    line-height: 25px;
+}
+.nav .details h2{
+    height: 22px;
+    font-size:16px;
+    color:#FF3232;
+    margin-bottom: 10px;
+}
+.nav .details ul{
+    display:flex;
+    height: 20px;
+}
+.nav .details ul li{
+    margin-right: 10px;
+    line-height: 20px;
+}
+.nav .details ul li a{
+    color: #999999;
+}
+nav .details ul li a:hover{
+    color:#fff;
+    background:#D61416;
+}
+nav .menus .jccp_navbgg{
+    position: absolute;
+    width:406px;
+    height:206px;
+    right:-20px;
+    bottom: -20px;
+    z-index: 200;
+    background:url("../images/header/jccp_navbgg.png") no-repeat;
+
+}
+.nav .menus{
+    display: none;
+}
+.nav .health-food>*:nth-child(2){
+    width:100%;
+}
+.nav .health-food .ysjk_navbg{
+    position: absolute;
+    z-index: 200;
+    width:325px;
+    height:208px;
+    right:-20px;
+    bottom: -20px;
+    background:url("../images/header/ysjk_navbg.png") no-repeat;
+}

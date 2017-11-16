@@ -1,0 +1,139 @@
+footer{
+    background:#3F3A32;
+    padding:10px 0 50px 0;
+    position: relative;
+}
+footer a{
+    color:#999999;
+}
+footer a:hover{
+    color: #ff3232;
+}
+footer .f-red{
+    color: #FF3232;
+    font-size:16px;
+}
+footer .f-white{
+    color: #fff;
+    font-size:14px;
+}
+fooeter .f-gray{
+    color: #999999;
+}
+.larger{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:16px;
+}
+footer>div{
+    width:990px;
+    margin:10px auto;
+    /*min-height: 500px;*/
+}
+
+/*****************美食杰logo**************/
+
+footer .footer-logo{
+    display: flex;
+    width:990px;
+    padding-bottom:10px;
+    justify-content:space-between;
+}
+footer .ms-logo{
+    color:#fff;
+    width:50%;
+}
+footer .footer-logo .ms-logo .logo{
+    display:inline-block;
+    width:239px;
+    height:70px;
+    background:url('../images/footer/logo_f.png') no-repeat;
+}
+footer .footer-logo .ms-logo>*:not(:first-child){
+    margin-top:5px;
+}
+
+/*****************登录logo**************/
+
+footer .footer-logo .login-logo{
+    display:flex;
+    width:50%;
+    text-align: center;
+    justify-content: space-between;
+    align-items:flex-end;
+}
+
+footer .footer-logo .login-logo .text{
+    display: flex;
+    width:105px;
+    flex-wrap: wrap;
+    color:#99998C;
+    margin-top:10px;
+}
+footer .footer-logo .login-logo .text *{
+    padding-top:5px;
+    width:100%;
+    text-align: center;
+}
+footer  .pic{
+    display: block;
+    width:105px;
+    height:105px;
+    background:url('../images/footer/footerlinks.png') no-repeat;
+}
+footer .weibo{
+    background-position:0 0;
+}
+footer .qzone{
+    background-position:-105px 0;
+}
+footer .friend{
+    background-position:-210px 0;
+}
+footer .load{
+    background-position:-315px 0;
+}
+/*友情链接*/
+
+.links{
+    margin: 10px 0;
+    padding:10px 0;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-content:space-between;
+    width:100%;
+    border-bottom:1px solid #999999;
+    border-top:1px solid #999999;
+}
+.links>*{
+    padding:5px 0;
+    width:10%;
+
+}
+/*公司链接*/
+.company{
+    display:flex;
+    justify-content: center;
+}
+.company>*{
+    padding:10px;
+}
+footer .company a:hover{
+    color: #fff;
+}
+.copy{
+    color: #666;
+    text-align: center;
+}
+footer .to-top{
+    position:absolute;
+    right: 50px;
+    bottom:20px;
+    width:48px;
+    height:48px;
+    background:url('../images/footer/backtotop_icon.png') no-repeat 0 0;
+}
+footer .to-top:hover{
+    background-position: 0 -48px;
+}
+
